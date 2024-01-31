@@ -1,14 +1,20 @@
 {
   "name": "ui",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "main": "./module.ts",
+  "types": "./module.ts",
   "scripts": {
     "lint": "eslint ."
   },
   "devDependencies": {
+    "@nuxt/kit": "^3.10.0",
+    "@vueuse/core": "^10.7.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "eslint-config-custom": "workspace:*",
+    "nuxt": "^3.9.0",
+    "tailwind-merge": "^2.2.1",
     "tsconfig": "workspace:*",
     "vue": "^3.4.5"
   }
