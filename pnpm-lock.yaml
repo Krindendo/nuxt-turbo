@@ -23,6 +23,9 @@ importers:
 
   apps/docs:
     dependencies:
+      lucide-vue-next:
+        specifier: ^0.321.0
+        version: 0.321.0(vue@3.4.5)
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.1)
@@ -84,6 +87,9 @@ importers:
 
   packages/ui:
     dependencies:
+      lucide-vue-next:
+        specifier: ^0.321.0
+        version: 0.321.0(vue@3.4.5)
       radix-vue:
         specifier: ^1.4.0
         version: 1.4.0(vue@3.4.5)
@@ -5755,6 +5761,14 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /lucide-vue-next@0.321.0(vue@3.4.5):
+    resolution: {integrity: sha512-r4IXuXuFneX2tAJF9TxXY/X5J0zIblI/pBPMR5vcAtDFVAKwWHoGSvCMk3dkH2dmD/uUZfNZiLI5fa07g4pbMA==}
+    peerDependencies:
+      vue: '>=3.0.1'
+    dependencies:
+      vue: 3.4.5(typescript@5.3.3)
+    dev: false
 
   /magic-string-ast@0.3.0:
     resolution: {integrity: sha512-0shqecEPgdFpnI3AP90epXyxZy9g6CRZ+SZ7BcqFwYmtFEnZ1jpevcV5HoyVnlDS9gCnc1UIg3Rsvp3Ci7r8OA==}
