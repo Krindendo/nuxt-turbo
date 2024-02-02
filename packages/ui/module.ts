@@ -1,5 +1,4 @@
-import { defineNuxtModule, addComponentsDir } from "nuxt/kit";
-import { join } from "path";
+import { defineNuxtModule, addComponentsDir, createResolver } from "nuxt/kit";
 
 export interface UiVueOptions {
   prefix: string;
@@ -19,9 +18,11 @@ export default defineNuxtModule<UiVueOptions>({
     },
   },
   async setup({ prefix }) {
+    const resolver = createResolver(import.meta.url);
+
     addComponentsDir(
       {
-        path: join(__dirname, "components"),
+        path: resolver.resolve("components"),
         extensions: [".vue"],
         prefix,
         pathPrefix: false,
