@@ -10,14 +10,11 @@
   "devDependencies": {
     "@nuxt/kit": "^3.10.0",
     "@vueuse/core": "^10.7.2",
-    "autoprefixer": "^10.4.17",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "eslint-config-custom": "workspace:*",
     "nuxt": "^3.9.0",
-    "postcss": "^8.4.33",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss": "^3.4.1",
     "tsconfig": "workspace:*",
     "vue": "^3.4.5"
   },
