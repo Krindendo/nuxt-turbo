@@ -3,7 +3,11 @@ import tailwindcssAnimate from "tailwindcss-animate";
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: "class",
-  content: ["./components/**/*.vue", "../../packages/ui/components/**/*.vue"],
+  content: [
+    "./components/**/*.vue",
+    "../../packages/ui/components/**/*.vue",
+    "./pages/*.vue",
+  ],
   theme: {
     container: {
       center: true,

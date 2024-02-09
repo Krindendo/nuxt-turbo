@@ -1,4 +1,14 @@
-export const posts = [
+export interface Posts {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  date: string;
+  likes: number;
+  comments: number;
+}
+
+export const posts: Posts[] = [
   {
     id: 1,
     title: "Exploring the wonders of Deep Learning",
