@@ -19,12 +19,17 @@ import { fetchData } from "~/lib/fetchData";
 import type { Posts } from "~/lib/mockData";
 
 const post = ref<Posts[]>([]);
+const controllerPost = new AbortController();
+const signalPost = controllerPost.signal;
+
 const getFast = async () => {
   try {
     const { data, error } = await fetchData.get<Posts[]>(
-      "/api/requests/fast-req1"
+      "/api/requests/fast-req",
+      { signal: signalPost }
     );
     if (data) {
+      controllerPost.abort();
       post.value = data;
     }
   } catch (error) {}
@@ -32,9 +37,11 @@ const getFast = async () => {
 
 const getSlow = async () => {
   const { data, error } = await fetchData.get<Posts[]>(
-    "/api/requests/slow-req"
+    "/api/requests/slow-req",
+    { signal: signalPost }
   );
   if (data) {
+    controllerPost.abort();
     post.value = data;
   }
 };

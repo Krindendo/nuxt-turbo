@@ -1,19 +1,5 @@
 import type { NitroFetchOptions, NitroFetchRequest } from "nitropack";
 
-//const isDevEnv = import.meta.env.MODE === "development";
-// const baseURL = import.meta.env.VITE_API_URL;
-
-// function logWarning(...text: string[]) {
-//   if (isDevEnv) {
-//     console.log(text);
-//   }
-// }
-// function logError(...text: string[]) {
-//   if (isDevEnv) {
-//     console.error(text);
-//   }
-// }
-
 interface ResponseSuccess<T> {
   data: T;
   error: null;
@@ -21,7 +7,7 @@ interface ResponseSuccess<T> {
 
 interface ResponseError {
   data: null;
-  error: { status: number; data: string };
+  error: { status: number; data: string } | null;
 }
 
 type ResponseData<T> = Promise<ResponseSuccess<T> | ResponseError>;
@@ -43,15 +29,28 @@ async function requestConstructor<T>(
   url: string,
   options: FetchOptions
 ): ResponseData<T> {
+  const config = useRuntimeConfig();
   try {
-    const data = (await $fetch<T>(url, options)) as T;
+    const data = (await $fetch<T>(
+      `${config.public.apiUrl}${url}`,
+      options
+    )) as T;
     console.log("data", data);
     return { data, error: null };
   } catch (error) {
-    console.log("error", error.data);
+    console.log("error", error?.data);
+    if (error?.data) {
+      return {
+        data: null,
+        error: {
+          status: error.data.statusCode,
+          data: error.data.statusMessage,
+        },
+      };
+    }
     return {
       data: null,
-      error: { status: error.data.statusCode, data: error.data.statusMessage },
+      error: null,
     };
   }
 }
