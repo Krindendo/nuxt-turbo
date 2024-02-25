@@ -15,20 +15,27 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { fetchData } from "~/lib/fetchData";
 import type { Posts } from "~/lib/mockData";
 
 const post = ref<Posts[]>([]);
 const getFast = async () => {
-  const data = await $fetch<Posts[]>(`/api/requests/fast-req`, {
-    method: "GET",
-  });
-  post.value = data;
+  try {
+    const { data, error } = await fetchData.get<Posts[]>(
+      "/api/requests/fast-req1"
+    );
+    if (data) {
+      post.value = data;
+    }
+  } catch (error) {}
 };
 
 const getSlow = async () => {
-  const data = await $fetch<Posts[]>(`/api/requests/slow-req`, {
-    method: "GET",
-  });
-  post.value = data;
+  const { data, error } = await fetchData.get<Posts[]>(
+    "/api/requests/slow-req"
+  );
+  if (data) {
+    post.value = data;
+  }
 };
 </script>
